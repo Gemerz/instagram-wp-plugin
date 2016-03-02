@@ -303,7 +303,7 @@ if (!sbi_js_exists) {
                     links:true,
                     resolution: imgRes,
                     limit: parseInt(num, 10),
-                    template: '<div class="sbi_item sbi_type_{{model.type}} sbi_new" id="sbi_{{id}}" data-date="{{model.created_time_raw}}"><div class="sbi_photo_wrap"><a class="sbi_photo" href="{{link}}" target="_blank"><img src="{{image}}" alt="{{caption}}" /><div class="cover"><span>{{caption}}</span></div></a></div></div>',
+                    template: '<div class="sbi_item sbi_type_{{model.type}} sbi_new" id="sbi_{{id}}" data-date="{{model.created_time_raw}}"><div class="sbi_photo_wrap"><a class="sbi_photo" href="{{link}}" target="_blank"><img src="{{image}}" alt="{{caption}}" /></a></div></div>',
                     filter: function (image) {
                         //Create time for sorting
                         var date = new Date(image.created_time * 1000),
@@ -462,7 +462,12 @@ if (!sbi_js_exists) {
                                 }
                                 head.appendChild(style);
                             }();
-                            $self.find(".sbi_photo").sbi_imgLiquid({fill: true});
+                            $self.find(".sbi_photo").sbi_imgLiquid({fill: true,
+                                onItemFinish:   function(index, container, img){
+                                    //jQuery(container).hoverdir();
+
+                                }
+                            });
                         } // End: ( imgRes !== 'thumbnail' ) check
 
                         //Only check the width once the resize event is over

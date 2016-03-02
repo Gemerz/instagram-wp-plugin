@@ -200,6 +200,7 @@ function sb_instagram_styles_enqueue() {
     wp_register_style( 'sb_instagram_styles', plugins_url('css/sb-instagram.css', __FILE__), array(), SBIVER );
     wp_enqueue_style( 'sb_instagram_styles' );
     wp_enqueue_style( 'sb_instagram_icons', '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css?1', array(), '4.2.0' );
+
 }
 
 //Enqueue scripts
@@ -207,7 +208,7 @@ add_action( 'wp_enqueue_scripts', 'sb_instagram_scripts_enqueue' );
 function sb_instagram_scripts_enqueue() {
     //Register the script to make it available
     wp_register_script( 'sb_instagram_scripts', plugins_url( '/js/sb-instagram.js' , __FILE__ ), array('jquery'), SBIVER, true );
-
+    wp_enqueue_script( 'sb_instagram_scripts', plugins_url( '/js/sb-hoverdir.js' , __FILE__ ), array('jquery'), SBIVER, true );
     //Options to pass to JS file
     $sb_instagram_settings = get_option('sb_instagram_settings');
 
